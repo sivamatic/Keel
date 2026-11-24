@@ -10,8 +10,9 @@
 ![Keel: open-weight decision model for AI agents. Keel-Pro scores 62.73 on the Decision Index 0.3 public suite.](docs/media/keel-social-card.png)
 
 > **New: Keel-Pro.** An open-weight Qwen3.5-27B LoRA that scores **62.73** on the full Decision Index 0.3 public
-> suite (139,677 requests), level with Microsoft-Decision-1 (≈62, estimate) and above TypeSafe Jev 1.14 (60.70).
-> Median latency 245 ms on one RTX 5090. [Story](docs/keel-pro.md) · [Model card](artifacts/parity/pro/MODEL_CARD.md) · [Deploy](docs/deployment.md)
+> suite (139,677 requests, self-run with the DI kit). Median latency 245 ms on one RTX 5090.
+> For scale: the live DI board (0.4.1, 346 entries) ranks on private tests we have not been run on yet; on the public
+> index alone 62.73 would sit around #99, and the best entries score 73–75. [Story](docs/keel-pro.md) · [Model card](artifacts/parity/pro/MODEL_CARD.md) · [Deploy](docs/deployment.md)
 
 Keel is a small open-weight decision model. You send it some text and a typed question (pick one option, rate on a scale, or yes/no). It returns calibrated probabilities in milliseconds, with no network call, no account and no per-token bill. It speaks the same System One wire as TypeSafe Jev and Microsoft-Decision-1, so existing clients work after a base-URL change.
 
@@ -102,7 +103,7 @@ All numbers are measured by scripts in this repository on suites the models neve
 
 We have not measured Jev or Microsoft-Decision-1 ourselves, because no credentials were available. Their published figures are vendor-reported. See [Benchmarks](docs/benchmarks.md) and [Comparison](docs/comparison.md).
 
-**Keel-Pro (optional, GPU).** An open-weight Qwen3.5-27B LoRA, served by a local sidecar under model `decider-pro-1.0.0`, scores **62.73** on the full [Decision Index](https://github.com/apolinario/decision-index) public 0.3 suite: all 139,677 public requests, measured on this machine, with gated HLE counted as 0. An earlier 3,272-row report sample, scored once, gave 61.96 (95% CI 58.98–64.42). Jev 1.14 is 60.70 on the DI board, and Microsoft-Decision-1 is about 62 (an estimate read from Microsoft's chart). So this is parity or slightly better, not a proven win. On the full suite on an RTX 5090, median latency is 245 ms, p80 438 ms and mean 528 ms, all inside the DI board's 1 s rule. See [Keel-Pro](docs/keel-pro.md).
+**Keel-Pro (optional, GPU).** An open-weight Qwen3.5-27B LoRA, served by a local sidecar under model `decider-pro-1.0.0`, scores **62.73** on the full [Decision Index](https://github.com/apolinario/decision-index) public 0.3 suite: all 139,677 public requests, measured on this machine, with gated HLE counted as 0. An earlier 3,272-row report sample, scored once, gave 61.96 (95% CI 58.98–64.42). Jev 1.14 is 60.70 on the board's public index. Microsoft-Decision-1 is not on the Decision Index, so we have no comparable number for it. The live board (0.4.1, 346 entries, data of 2026-11-21) ranks models on a Full score from private tests that only its maintainers run; Keel-Pro has not been submitted yet. On the public index alone, 62.73 would place about #99, and the best 27B–31B entries score 73–75. Training used train splits of public datasets behind 24 DI benchmarks, in DI's format (never DI eval rows; see [DATA.md](artifacts/parity/pro/DATA.md)), so expect the private Full score to come in lower than the public index. On the full suite on an RTX 5090, median latency is 245 ms, p80 438 ms and mean 528 ms, all inside the DI board's 1 s rule. Every answer is public and re-scorable in [neerumsr/keel-pro-di-results](https://huggingface.co/datasets/neerumsr/keel-pro-di-results). See [Keel-Pro](docs/keel-pro.md).
 
 ## Deploy anywhere
 

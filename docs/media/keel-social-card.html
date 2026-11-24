@@ -23,6 +23,7 @@ h1 span{background:linear-gradient(90deg,#7aa2ff,#22d3ee);-webkit-background-cli
 .me .fill{background:linear-gradient(90deg,#5b8cff,#22d3ee)}
 .me .lab{color:#fff;font-weight:700}
 .note{margin-top:auto;font-size:15px;color:#8090b0;line-height:1.4}
+.checks{margin-top:26px;display:flex;flex-direction:column;gap:16px}.ck{font-size:21px;color:#d6e0f5;display:flex;gap:12px;align-items:center}.ck i{font-style:normal;width:28px;height:28px;border-radius:8px;background:linear-gradient(135deg,#5b8cff,#22d3ee);color:#07101f;display:grid;place-items:center;font-weight:800;font-size:17px}.stat{margin-top:26px;display:flex;align-items:center;gap:18px}.stat b{font-size:52px;font-weight:800;background:linear-gradient(90deg,#7aa2ff,#22d3ee);-webkit-background-clip:text;color:transparent}.stat span{font-size:17px;color:#aab7d4;line-height:1.35}
 </style></head><body><div class="grid"></div>
 <div class="wrap">
  <div class="left">
@@ -32,13 +33,15 @@ h1 span{background:linear-gradient(90deg,#7aa2ff,#22d3ee);-webkit-background-cli
   <div class="pills"><div class="pill">Apache-2.0</div><div class="pill">Qwen3.5-27B LoRA</div><div class="pill">245 ms median</div><div class="pill">GGUF · Docker · K8s</div></div>
  </div>
  <div class="right">
-  <div class="rt">Decision Index 0.3 · public</div>
-  <div class="rh">Full public suite, 139,677 requests</div>
-  <div class="bars">
-   <div class="row me"><div class="lab"><span>Keel-Pro (open weights)</span><b>62.73</b></div><div class="track"><div class="fill" style="width:89.6%"></div></div></div>
-   <div class="row"><div class="lab"><span>Microsoft-Decision-1 *</span><b>≈62</b></div><div class="track"><div class="fill" style="width:88.6%"></div></div></div>
-   <div class="row"><div class="lab"><span>TypeSafe Jev 1.14</span><b>60.70</b></div><div class="track"><div class="fill" style="width:86.7%"></div></div></div>
+  <div class="rt">Everything is open</div>
+  <div class="rh">Weights, pipeline, every eval run</div>
+  <div class="checks">
+   <div class="ck"><i>✓</i>Apache-2.0 LoRA on Qwen3.5-27B, plus GGUF</div>
+   <div class="ck"><i>✓</i>Training data recipe, with every licence</div>
+   <div class="ck"><i>✓</i>All 139,677 Decision Index answers, re-scorable</div>
+   <div class="ck"><i>✓</i>Docker · Kubernetes · MCP · System One API</div>
   </div>
-  <div class="note">Keel-Pro measured on one RTX 5090 with the DI kit; gated HLE counted as 0. Jev from the DI board. * Estimate read from Microsoft's published chart. Bars start at 0, scale 0–70.</div>
- </div>
+  <div class="stat"><b>62.73</b><span>Decision Index 0.3 public index,<br>full suite, self-run</span></div>
+  <div class="note">Measured on one RTX 5090 with the DI kit; gated HLE counted as 0. Not yet scored on the board's private tests.</div>
+  </div>
 </div></body></html>

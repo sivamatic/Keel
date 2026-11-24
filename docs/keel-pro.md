@@ -7,8 +7,14 @@ where it stands, mostly in pictures. Every number comes from a real run on our R
 
 ## The goal in one line
 
-Score at least **62** on the Decision Index (DI), the public board that ranks decision models.
-That beats Microsoft-Decision-1 (about 62, estimated from Microsoft's chart) and Jev 1.14 (60.70).
+Score at least **62** on the Decision Index (DI) public index, the open benchmark for decision models, which puts
+Keel-Pro above Jev 1.14 (60.70).
+
+**Where that sits on the live board.** The DI board (0.4.1, 346 entries, data of 2026-11-21) ranks models on a Full
+score from private tests that only its maintainers run. Keel-Pro has not been submitted yet. On the public index
+alone, 62.73 would place about **#99**; the best entries score 73–75. Microsoft-Decision-1 is not on the board.
+All 139,677 answers are public so anyone can re-score them:
+[neerumsr/keel-pro-di-results](https://huggingface.co/datasets/neerumsr/keel-pro-di-results).
 
 ## How it works, end to end
 
@@ -39,10 +45,10 @@ thinks each letter is. It never writes free text, so it cannot ramble or invent 
 - Training lifts a stock model from about **10** to **60+**.
 - The biggest single jump came from a bigger base model: **9B → 27B gave +6 points**.
 - Averaging two 27B runs (soup78) gave the best dev score, **62.06**.
-- On the separate report sample, scored once, the finalist gets **61.96** (95% range 58.98–64.42): above Jev's 60.70,
-  level with the MSD1 ≈62 estimate. Both targets are inside the range, so we call it **on par**.
-- On the **whole public suite** (139,677 questions, all answered), it scores **62.73**. That's above Jev's 60.70 and
-  level with MSD1's ≈62. HLE is still counted as 0, so the true number is a bit higher.
+- On the separate report sample, scored once, the finalist gets **61.96** (95% range 58.98–64.42). Jev's 60.70 is
+  inside that range, so we call it **on par with Jev**.
+- On the **whole public suite** (139,677 questions, all answered), it scores **62.73**, above Jev's 60.70. HLE is
+  still counted as 0, so the true number is a bit higher. About 98 board entries score higher on the public index.
 
 ### Where the finalist is strong and weak (report sample)
 
@@ -82,9 +88,9 @@ almost the same as its dev score (62.06). That means we did not over-tune to the
 | Keel-Pro (full public suite) | **62.73** | Ours, every public question, measured on this machine |
 | Keel-Pro (report) | 61.96 | Ours, 3,272-question sample |
 | Jev 1.14 | 60.70 | Above this |
-| Microsoft-Decision-1 | ≈62 (estimate) | Level with this |
+| Best DI board entries (27B–31B) | 73–75 | Well below these |
 
-Our 95% range (58.98–64.42) includes both targets. Plain reading: **on par with Jev and MSD1**, not a proven win.
+Our 95% range (58.98–64.42) includes Jev. Plain reading: **on par with Jev**, mid-board overall, not a proven win.
 
 **Why it8 looks lower but is not simply worse.** Music chords went from 2% to 85% right. But one
 sarcasm benchmark has a single "yes" example in our test sample: it7 caught it, it8 did not. That one tweet

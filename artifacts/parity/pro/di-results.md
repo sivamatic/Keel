@@ -7,7 +7,11 @@ transformers 5.20) using the DI kit @ `25c6ec7` with its own prompt and scorers 
 - `dev` = iteration sample (tuning allowed). `report` = disjoint sample, scored once per finalist.
 - HLE (benchmark 45) is gated and not built, so it is scored 0, which costs every row below about 1.2 index points
   (HLE is a gold benchmark in Knowledge & Reasoning).
-- Targets: Jev 1.14 = 60.70 (measured by DI). MSD1 ≈ 62 (**estimate** from Microsoft's own chart, not a measurement).
+- Targets: Jev 1.14 = 60.70 (measured by DI). Microsoft-Decision-1 is not on the Decision Index. Earlier versions of
+  this page used "MSD1 ≈ 62", which was **our extrapolation** (Microsoft's +1.2 lead over Jev 1.13 on its own,
+  undisclosed suite, added to Jev 1.14's 60.70), not a Microsoft number. It is no longer used.
+- Board context (DI 0.4.1, 346 entries, data of 2026-11-21): the board ranks on a Full score from private tests.
+  On the public index alone, 62.73 would place about #99; the best entries score 73–75.
 - Latency is our RTX 5090 per-request wall time, single process, not the DI maintainers' RTX PRO 6000 measurement.
 
 ## Full public 0.3 run (the whole public suite, not a sample)
@@ -15,6 +19,9 @@ transformers 5.20) using the DI kit @ `25c6ec7` with its own prompt and scorers 
 Finished 2026-11-13 16:26 (Pacific) with `python -m decision_index pipeline --edition 0.3 --engine hybrid_engine:ExactTransformersEngine
 --option letters=1 --option load_4bit=1 --option adapter=<soup78>` (fast engine, `prefix_share=1` default). It ran over
 several sessions and resumed from `results.jsonl` after interruptions; every request was answered (`ok` 139,677 of 139,677).
+All answers are published in [neerumsr/keel-pro-di-results](https://huggingface.co/datasets/neerumsr/keel-pro-di-results).
+To re-score on Windows, set `PYTHONUTF8=1` first; otherwise the kit reads files as cp1252, loses two BRIGHT queries
+whose ids contain `’`, and reports 62.71 / 139,675.
 
 | | Value |
 |---|---:|
@@ -29,7 +36,7 @@ several sessions and resumed from `results.jsonl` after interruptions; every req
   it counts as 0 (unanswered), so 62.73 is a lower bound. The board needs `"complete": true`, so HLE must be added
   and the same run resumed before submission.
 - No confidence interval: this is the full public suite, not a sample. It sits inside the report sample's CI
-  (58.98–64.42), above Jev 1.14's 60.70 and level with the MSD1 ≈62 estimate.
+  (58.98–64.42) and above Jev 1.14's 60.70.
 - Median, p80 and mean are all under the board's 1 s rule on our RTX 5090; the board measures on an RTX PRO 6000.
 
 ## Eval service history

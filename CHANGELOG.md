@@ -7,6 +7,19 @@ package major version.
 
 ## [Unreleased]
 
+### Added
+- All 139,677 Keel-Pro Decision Index 0.3 answers published as
+  [neerumsr/keel-pro-di-results](https://huggingface.co/datasets/neerumsr/keel-pro-di-results) so the 62.73 can be
+  re-scored independently.
+
+### Fixed (documentation)
+- Removed the claim that Keel-Pro is level with Microsoft-Decision-1. The "≈62" figure for MSD1 was our own
+  extrapolation (Microsoft's reported lead over Jev 1.13, measured on Microsoft's own suite, added to Jev 1.14's
+  public index); MSD1 is not on the Decision Index.
+- Added live-board context everywhere Keel-Pro's score appears: the DI 0.4.1 board ranks on a private Full score,
+  Keel-Pro is not submitted, 62.73 would be about #99 of 346 on the public index, and Keel-Pro was trained on train
+  splits of datasets behind 24 of the 37 index benchmarks in DI's format.
+- New social preview card that leads with openness instead of a ranking claim.
 ## [3.0.0] — 2026-11-15
 
 First public, open-source release.

@@ -34,12 +34,13 @@ Decision Index public suite. Both are Apache-2.0.
 
 | Say | Avoid |
 |---|---|
-| "Level with Microsoft-Decision-1 and above TypeSafe Jev 1.14 on the Decision Index public suite" | "Beats Microsoft" (MSD1 ≈62 is read from Microsoft's chart, not measured by us) |
-| "Measured on the full public suite, self-reported, HLE counted as 0" | "Official leaderboard score" (the board run is pending) |
-| "An open-weight 27B LoRA" | "A small model" (Keel-Pro is bigger than MSD1's 9B) |
+| "On par with TypeSafe Jev 1.14 on the Decision Index public suite" | Any comparison with Microsoft-Decision-1 (it is not on the Decision Index; Microsoft reports a different, undisclosed suite) |
+| "Measured on the full public suite, self-reported, HLE counted as 0" | "Official leaderboard score" or a board rank (not submitted; the board ranks on private tests) |
+| "An open-weight 27B LoRA with an open training pipeline" | "State of the art" or "top of the board" (about 98 entries score higher on the public index) |
+| "Trained on train splits of public datasets, in DI's format" | "Blind to the benchmark" |
 
-Microsoft-Decision-1 is a 9B model (vendor-reported). Keel-Pro uses a 27B base, so it reaches the same score with a larger
-model. Its advantage is that the weights are open and it runs on your own hardware. A smaller distilled version is in progress.
+Keel-Pro's case is openness, not rank: Apache-2.0 weights, the full training and eval pipeline, every eval run, and
+deployment recipes (Docker, Kubernetes, GGUF, MCP). The best open entries on the board score 73–75.
 
 ## Links
 

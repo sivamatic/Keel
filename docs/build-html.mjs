@@ -418,7 +418,7 @@ const DIAGRAMS = {
       "Keel-Pro pipeline: data, train, score, decide, finalist, report, export, serve, publish"),
   },
   "pro-iterations": {
-    caption: "Decision Index (public 0.3) on our dev sample, one bar per training run. Amber bars are the targets: Jev 1.14 is DI-measured; MSD1 is an estimate read from Microsoft's chart. Source: artifacts/parity/pro/di-results.md.",
+    caption: "Decision Index (public 0.3) on our dev sample, one bar per training run. Amber bars are references from the DI board: Jev 1.14 and the best board entry (karpo-decision-31B, 0.4.1 board, 2026-11-21). Source: artifacts/parity/pro/di-results.md.",
     svg: () => hbars([
       { name: "Keel-Lite (CPU, today's default)", v: 5.27 },
       { name: "Stock Qwen3.5-9B, no training", v: 10.13 },
@@ -432,9 +432,9 @@ const DIAGRAMS = {
       { name: "soup78 · REPORT sample, scored once", v: 61.96, cls: "bar strong" },
       { name: "soup78 · REPORT, fast engine (≤ 1 s rule)", v: 61.66, cls: "bar strong" },
       { name: "soup78 · FULL public suite (139,677 questions)", v: 62.73, cls: "bar strong" },
-      { name: "Jev 1.14 (target)", v: 60.7, cls: "bar warmbar" },
-      { name: "MSD1 ≈ (target, estimate)", v: 62, cls: "bar warmbar" },
-    ], { max: 70, label: "Dev index per iteration" }),
+      { name: "Jev 1.14 (DI board)", v: 60.7, cls: "bar warmbar" },
+      { name: "Best DI board entry (karpo-decision-31B)", v: 75.05, cls: "bar warmbar" },
+    ], { max: 80, label: "Dev index per iteration" }),
   },
   "pro-areas": {
     caption: "The five DI skill areas for the finalist (soup78) on the report sample, as % skill above chance. Tools is strong; Knowledge & Reasoning is the weak spot. Source: soup78 report run.",

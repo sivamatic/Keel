@@ -31,9 +31,20 @@ Keel-Pro is an open-weight decision model: given a `state` and one or more typed
 and serves Keel's optional `decider-pro-1.0.0` pin through a loopback sidecar
 (`serve/keel_pro_server.py`, see [SERVE.md](https://github.com/sivamatic/Keel/blob/main/artifacts/parity/pro/SERVE.md)). Keel-Lite (the CPU ONNX model) stays Keel's default.
 
-**At a glance:** Decision Index public 0.3 = **62.73** on the full public suite (all 139,677 requests answered;
-Jev 1.14 = 60.70 on the DI board; Microsoft-Decision-1 ≈ 62, read from Microsoft's chart). Median latency 245 ms
-per request on one RTX 5090. Apache-2.0, open weights, runs on your own GPU.
+**At a glance:** Decision Index public 0.3 = **62.73** on the full public suite (all 139,677 requests answered,
+self-run with the DI kit). Median latency 245 ms per request on one RTX 5090. Apache-2.0, open weights, runs on
+your own GPU.
+
+**Read this first.**
+- The live DI board (0.4.1, 346 entries, data of 2026-11-21) ranks on a **Full score from private tests** run by its
+  maintainers. Keel-Pro has **not** been submitted yet, so it has no Full score.
+- On the public index alone, 62.73 would place about **#99 of 346**. The best entries (27B–31B) score 73–75 public and
+  72–74 Full. Jev 1.14 is 60.70 public, 60.24 Full.
+- Training used **train splits of public datasets behind 24 of the 37 DI benchmarks, in DI's prompt format** (never
+  DI eval rows; see DATA.md). Expect the private Full score to come in lower than the public index.
+- Microsoft-Decision-1 is not on the Decision Index, so there is no comparable number for it.
+- Every answer from the 62.73 run is public and re-scorable:
+  [neerumsr/keel-pro-di-results](https://huggingface.co/datasets/neerumsr/keel-pro-di-results).
 
 ## Quick start
 
@@ -73,8 +84,8 @@ Measured on this machine with the DI kit's own prompts and scorers ([di-results.
 | Keel-Pro (soup78), fast engine | report | 61.66 | 58.83–64.28 | 316 ms (mean 844, p80 847) |
 | Keel-Pro (finalist, soup78) | dev | 62.06 | 56.63–64.13 | 321 ms |
 | Keel-Pro it7 (single run) | dev | 60.32 | 55.09–62.68 | 319 ms |
-| Jev 1.14 | full suite | 60.70 | — | — (DI-measured, vendor board) |
-| Microsoft-Decision-1 | full suite | ≈62 | — | estimate read from Microsoft's chart, not a measurement |
+| Jev 1.14 | full suite | 60.70 | — | — (DI board public index; Full score 60.24) |
+| Best entries on the DI 0.4.1 board | full suite | 73–75 | — | DI board, 2026-11-21 (e.g. karpo-decision-31B 75.05, GLiDE 27B 72.49) |
 | Keel-Lite (`decider-3.0.0`) over HTTP | dev | 5.27 | 4.68–8.11 | 19 ms |
 | Stock Qwen3.5-9B (kit prompt) | dev | 10.13 | 7.80–13.75 | 125 ms |
 
@@ -86,8 +97,8 @@ so this is a lower bound, and `scores.json` is not yet `"complete": true` for th
 latency (245 / 438 / 528 ms) are all under the board's 1 s rule on our RTX 5090.
 
 Report-sample area scores (soup78): knowledge 0.480, language 0.625, retrieval 0.612, tools 0.817, arts 0.621.
-Read honestly: 61.96 is above Jev 1.14's 60.70 point estimate and level with the ≈62 Microsoft-Decision-1 estimate,
-but both lie inside our 95% CI, so this is **on par**, not a proven win. Three candidates (it7, it8, soup78) were
+Read honestly: 61.96 is above Jev 1.14's 60.70 point estimate, but 60.70 lies inside our 95% CI, so this is
+**on par with Jev**, not a proven win, and well behind the top of the board. Three candidates (it7, it8, soup78) were
 compared on `dev`; the `report` sample was scored once, for soup78 only.
 
 Fast engine (`hybrid_engine.py`, `prefix_share=1`, the default): for a request with several questions, the token

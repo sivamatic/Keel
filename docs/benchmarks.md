@@ -125,11 +125,11 @@ Keel-Pro is the optional GPU model: a LoRA on Qwen3.5-27B, served by `serve/keel
 | Keel-Pro (soup78), fast engine | same report rows | 61.66 | 58.83–64.28 | 316 ms; mean 844, p80 847 |
 | **Keel-Pro (soup78), fast engine** | **full public suite, 139,677 requests** | **62.73** | — (full suite; HLE counted 0) | 245 ms; mean 528, p80 438 |
 | Keel-Pro (soup78) | dev, 1,633 rows | 62.06 | 56.63–64.13 | 321 ms |
-| Jev 1.14 | DI board, full suite | 60.70 | — | DI-measured |
-| Microsoft-Decision-1 | — | ≈62 | — | estimate read from Microsoft's chart |
+| Jev 1.14 | DI board, full suite | 60.70 | — | DI-measured (Full score 60.24) |
+| Best DI 0.4.1 board entries | DI board, full suite | 73–75 | — | e.g. karpo-decision-31B 75.05 (2026-11-21) |
 | Keel-3 (`decider-3.0.0`) over HTTP | dev | 5.27 | 4.68–8.11 | 19 ms |
 
-These are sample estimates, not the board's full-suite number. Both targets sit inside our CI, so read this as **on par**. Every run is in `artifacts/parity/pro/di-results.md`, and the visual walk-through is in [Keel-Pro](keel-pro.md).
+These are self-run numbers, not board results. Jev sits inside our CI, so read this as **on par with Jev**. The live board (0.4.1, 346 entries) ranks on private tests we have not been run on; on the public index alone, 62.73 would place about #99. Microsoft-Decision-1 is not on the Decision Index. Every run is in `artifacts/parity/pro/di-results.md`, and the visual walk-through is in [Keel-Pro](keel-pro.md).
 
 ## Vendor-reported figures
 
